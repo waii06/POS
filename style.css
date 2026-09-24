@@ -1899,3 +1899,119 @@ td {
     }
 }
 
+/* =========================================
+   MOBILE BOTTOM NAVIGATION
+========================================= */
+
+.mobile-bottom-nav {
+    display: none;
+}
+
+
+/* =========================================
+   PHONE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .mobile-bottom-nav {
+        position: fixed;
+        display: flex;
+
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        height: 68px;
+
+        background: #111111;
+        border-top: 1px solid #292929;
+
+        z-index: 99999;
+
+        align-items: center;
+        justify-content: space-around;
+
+        padding: 5px 8px;
+
+        box-shadow:
+            0 -8px 25px rgba(0, 0, 0, 0.45);
+    }
+
+
+    .mobile-nav-item {
+        appearance: none;
+        border: none;
+        outline: none;
+
+        background: transparent;
+        color: #666;
+
+        width: 25%;
+        height: 60px;
+
+        display: flex;
+        flex-direction: column;
+
+        align-items: center;
+        justify-content: center;
+
+        gap: 4px;
+
+        cursor: pointer;
+
+        transition:
+            color 0.25s ease,
+            transform 0.25s ease;
+    }
+
+
+    .mobile-nav-item .nav-icon {
+        font-size: 21px;
+        line-height: 20px;
+    }
+
+
+    .mobile-nav-item span:last-child {
+        font-size: 9px;
+        font-weight: 500;
+        letter-spacing: 0.2px;
+    }
+
+
+    /* ACTIVE PAGE */
+
+    .mobile-nav-item.active {
+        color: #ffffff;
+    }
+
+
+    .mobile-nav-item.active .nav-icon {
+        transform: translateY(-2px);
+    }
+
+
+    .mobile-nav-item:active {
+        transform: scale(0.92);
+    }
+
+
+    /* HIDE DESKTOP SIDEBAR ON PHONE */
+
+    .sidebar {
+        display: none !important;
+    }
+
+
+    /* CONTENT SHOULD NOT GO UNDER NAVIGATION */
+
+    body {
+        padding-bottom: 68px;
+    }
+
+
+    .main {
+        padding-bottom: 20px;
+    }
+
+}
