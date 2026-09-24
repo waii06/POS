@@ -1835,3 +1835,67 @@ td {
     }
 
 }
+/* ================================
+   MOBILE NAVIGATION
+================================ */
+
+.mobile-nav {
+    display: none;
+}
+
+@media (max-width: 600px) {
+
+    .mobile-nav {
+        position: fixed;
+        display: flex;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 65px;
+        background: #111;
+        border-top: 1px solid #333;
+        z-index: 9999;
+        justify-content: space-around;
+        align-items: center;
+        padding: 5px 8px;
+    }
+
+    .mobile-nav button {
+        flex: 1;
+        height: 55px;
+        border: none;
+        background: transparent;
+        color: #777;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 3px;
+        cursor: pointer;
+        transition: 0.25s ease;
+    }
+
+    .mobile-nav button span {
+        font-size: 20px;
+    }
+
+    .mobile-nav button small {
+        font-size: 9px;
+    }
+
+    .mobile-nav button:hover,
+    .mobile-nav button.active {
+        color: white;
+        transform: translateY(-2px);
+    }
+
+    /* Para hindi matakpan ng navigation ang content */
+    body {
+        padding-bottom: 65px;
+    }
+
+    .sidebar {
+        display: none !important;
+    }
+}
+
