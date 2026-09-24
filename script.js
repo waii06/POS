@@ -1,13 +1,3 @@
-// ==========================================
-// MONO POS
-// Dashboard + Orders + Products + Reports
-// ==========================================
-
-
-// ==========================================
-// DEFAULT PRODUCTS
-// ==========================================
-
 const defaultProducts = [
     {
         id: 1,
@@ -95,11 +85,6 @@ const defaultProducts = [
     }
 ];
 
-
-// ==========================================
-// LOCAL STORAGE
-// ==========================================
-
 let products =
     JSON.parse(localStorage.getItem("monoProducts"))
     || defaultProducts;
@@ -109,11 +94,6 @@ let orders =
     || [];
 
 let cart = [];
-
-
-// ==========================================
-// SAVE DATA
-// ==========================================
 
 function saveProducts() {
 
@@ -131,11 +111,6 @@ function saveOrders() {
         JSON.stringify(orders)
     );
 }
-
-
-// ==========================================
-// DOM
-// ==========================================
 
 const productGrid =
     document.getElementById("productGrid");
@@ -176,11 +151,6 @@ const productModal =
 const orderModal =
     document.getElementById("orderModal");
 
-
-// ==========================================
-// DATE
-// ==========================================
-
 function updateDate() {
 
     const now = new Date();
@@ -199,11 +169,6 @@ function updateDate() {
 
 updateDate();
 
-
-// ==========================================
-// MONEY
-// ==========================================
-
 function formatMoney(amount) {
 
     return `₱${Number(amount).toLocaleString(
@@ -214,11 +179,6 @@ function formatMoney(amount) {
         }
     )}`;
 }
-
-
-// ==========================================
-// NAVIGATION
-// ==========================================
 
 const navItems =
     document.querySelectorAll(".nav-item");
@@ -281,11 +241,6 @@ navItems.forEach(button => {
     });
 
 });
-
-
-// ==========================================
-// DASHBOARD PRODUCTS
-// ==========================================
 
 function displayProducts(list = products) {
 
@@ -360,11 +315,6 @@ function displayProducts(list = products) {
 
 displayProducts();
 
-
-// ==========================================
-// SEARCH
-// ==========================================
-
 searchInput.addEventListener(
     "input",
     () => {
@@ -387,11 +337,6 @@ searchInput.addEventListener(
 
     }
 );
-
-
-// ==========================================
-// CATEGORY
-// ==========================================
 
 document
     .querySelectorAll(".category")
@@ -434,11 +379,6 @@ document
         );
 
     });
-
-
-// ==========================================
-// CART
-// ==========================================
 
 function addToCart(productId) {
 
@@ -605,11 +545,6 @@ function renderCart() {
     updateSummary();
 }
 
-
-// ==========================================
-// SUMMARY
-// ==========================================
-
 function calculateSubtotal() {
 
     return cart.reduce(
@@ -699,11 +634,6 @@ paymentInput.addEventListener(
     updateChange
 );
 
-
-// ==========================================
-// CLEAR CART
-// ==========================================
-
 document
     .getElementById("clearCart")
     .addEventListener(
@@ -718,11 +648,6 @@ document
 
         }
     );
-
-
-// ==========================================
-// CHECKOUT
-// ==========================================
 
 document
     .getElementById("checkoutBtn")
@@ -813,11 +738,6 @@ function completePayment() {
 
 }
 
-
-// ==========================================
-// ORDER NUMBER
-// ==========================================
-
 function generateOrderNumber() {
 
     return Math.floor(
@@ -826,11 +746,6 @@ function generateOrderNumber() {
     );
 
 }
-
-
-// ==========================================
-// RECEIPT
-// ==========================================
 
 function generateReceipt(order) {
 
@@ -917,11 +832,6 @@ function generateReceipt(order) {
     receipt.innerHTML = html;
 }
 
-
-// ==========================================
-// NEW ORDER
-// ==========================================
-
 document
     .getElementById("newOrder")
     .addEventListener(
@@ -954,11 +864,6 @@ document
 
         }
     );
-
-
-// ==========================================
-// ORDERS PAGE
-// ==========================================
 
 function renderOrders() {
 
@@ -1060,11 +965,6 @@ function renderOrders() {
     });
 
 }
-
-
-// ==========================================
-// VIEW ORDER
-// ==========================================
 
 function viewOrder(orderId) {
 
@@ -1182,11 +1082,6 @@ document
         }
     );
 
-
-// ==========================================
-// PRODUCTS MANAGEMENT
-// ==========================================
-
 function renderAdminProducts() {
 
     const container =
@@ -1259,11 +1154,6 @@ function renderAdminProducts() {
 
 }
 
-
-// ==========================================
-// ADD PRODUCT
-// ==========================================
-
 document
     .getElementById("addProductBtn")
     .addEventListener(
@@ -1298,11 +1188,6 @@ document
 
         }
     );
-
-
-// ==========================================
-// EDIT PRODUCT
-// ==========================================
 
 function editProduct(productId) {
 
@@ -1368,11 +1253,6 @@ function editProduct(productId) {
         .add("show");
 
 }
-
-
-// ==========================================
-// SAVE PRODUCT
-// ==========================================
 
 document
     .getElementById("productForm")
@@ -1488,11 +1368,6 @@ document
         }
     );
 
-
-// ==========================================
-// DELETE PRODUCT
-// ==========================================
-
 function deleteProduct(productId) {
 
     const product =
@@ -1528,11 +1403,6 @@ function deleteProduct(productId) {
 
 }
 
-
-// ==========================================
-// CLOSE PRODUCT MODAL
-// ==========================================
-
 document
     .getElementById("closeProductModal")
     .addEventListener(
@@ -1545,11 +1415,6 @@ document
 
         }
     );
-
-
-// ==========================================
-// REPORTS
-// ==========================================
 
 function renderReports() {
 
@@ -1620,11 +1485,6 @@ function renderReports() {
     renderProductReport();
 
 }
-
-
-// ==========================================
-// PRODUCT REPORT
-// ==========================================
 
 function renderProductReport() {
 
@@ -1738,11 +1598,6 @@ function renderProductReport() {
 
 }
 
-
-// ==========================================
-// CLEAR REPORTS / ORDERS
-// ==========================================
-
 document
     .getElementById("clearReportsBtn")
     .addEventListener(
@@ -1785,11 +1640,6 @@ document
         }
     );
 
-
-// ==========================================
-// LOGOUT
-// ==========================================
-
 document
     .getElementById("logoutBtn")
     .addEventListener(
@@ -1812,12 +1662,7 @@ document
 
         }
     );
-
-
-// ==========================================
-// INITIALIZE
-// ==========================================
-
+    
 renderCart();
 
 renderAdminProducts();
