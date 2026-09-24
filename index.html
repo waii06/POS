@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TJ | POS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-box">C</div>
+
+            <div>
+                <h2>COFFEE</h2>
+                <span>TJ | POINT OF SALE</span>
+            </div>
+        </div>
+
+        <nav>
+
+            <button class="nav-item active" data-page="dashboard">
+                <span>▦</span>
+                Dashboard
+            </button>
+
+            <button class="nav-item" data-page="orders">
+                <span>▤</span>
+                Orders
+            </button>
+
+            <button class="nav-item" data-page="products">
+                <span>◉</span>
+                Products
+            </button>
+
+            <button class="nav-item" data-page="reports">
+                <span>▣</span>
+                Reports
+            </button>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <div class="cashier">
+                <div class="avatar">TJ</div>
+
+                <div>
+                    <strong>TJ Guevarra</strong>
+                    <small>Owner</small>
+                </div>
+            </div>
+
+            <button class="logout" id="logoutBtn">
+                ⇥ Logout
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <header class="topbar">
+
+            <div>
+                <h1 id="pageTitle">TJ | POINT OF SALE</h1>
+                <p id="date"></p>
+            </div>
+
+            <div class="status">
+                <span class="status-dot"></span>
+                System Online
+            </div>
+
+        </header>
+
+        <section class="page active-page" id="dashboardPage">
+
+            <div class="content">
+
+                <div class="products-section">
+
+                    <div class="section-header">
+
+                        <div>
+                            <h2>Products</h2>
+                            <p>Select an item to add to your order</p>
+                        </div>
+
+                        <div class="search-box">
+
+                            <span>⌕</span>
+
+                            <input
+                                type="text"
+                                id="searchInput"
+                                placeholder="Search product..."
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="categories">
+
+                        <button class="category active" data-category="all">
+                            All
+                        </button>
+
+                        <button class="category" data-category="coffee">
+                            Coffee
+                        </button>
+
+                        <button class="category" data-category="food">
+                            Food
+                        </button>
+
+                        <button class="category" data-category="dessert">
+                            Dessert
+                        </button>
+
+                    </div>
+
+
+                    <div class="product-grid" id="productGrid"></div>
+
+                </div>
+
+                <aside class="cart">
+
+                    <div class="cart-header">
+
+                        <div>
+                            <h2>Current Order</h2>
+                            <span id="itemCount">0 items</span>
+                        </div>
+
+                        <button class="clear-btn" id="clearCart">
+                            Clear
+                        </button>
+
+                    </div>
+
+
+                    <div class="cart-items" id="cartItems">
+
+                        <div class="empty-cart">
+
+                            <div class="empty-icon">🛒</div>
+
+                            <h3>Your cart is empty</h3>
+
+                            <p>Select a product to start an order.</p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="cart-summary">
+
+                        <div class="summary-row">
+                            <span>Subtotal</span>
+                            <strong id="subtotal">₱0.00</strong>
+                        </div>
+
+                        <div class="summary-row">
+                            <span>Tax (12%)</span>
+                            <strong id="tax">₱0.00</strong>
+                        </div>
+
+                        <div class="summary-divider"></div>
+
+                        <div class="total-row">
+                            <span>Total</span>
+                            <strong id="total">₱0.00</strong>
+                        </div>
+
+
+                        <div class="payment">
+
+                            <label>Payment</label>
+
+                            <div class="payment-input">
+
+                                <span>₱</span>
+
+                                <input
+                                    type="number"
+                                    id="paymentInput"
+                                    placeholder="0.00"
+                                    min="0"
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="change-row">
+
+                            <span>Change</span>
+
+                            <strong id="change">
+                                ₱0.00
+                            </strong>
+
+                        </div>
+
+
+                        <button
+                            class="checkout-btn"
+                            id="checkoutBtn"
+                        >
+                            Complete Payment
+                            <span>→</span>
+                        </button>
+
+                    </div>
+
+                </aside>
+
+            </div>
+
+        </section>
+
+        <section class="page" id="ordersPage">
+
+            <div class="management-page">
+
+                <div class="page-heading">
+
+                    <div>
+                        <h2>Orders</h2>
+                        <p>View all completed transactions.</p>
+                    </div>
+
+                    <div class="stat-card small">
+                        <span>Total Orders</span>
+                        <strong id="ordersCount">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>Order #</th>
+                                <th>Date</th>
+                                <th>Items</th>
+                                <th>Total</th>
+                                <th>Payment</th>
+                                <th>Change</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="ordersTable"></tbody>
+
+                    </table>
+
+                    <div class="table-empty" id="ordersEmpty">
+                        No completed orders yet.
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="page" id="productsPage">
+
+            <div class="management-page">
+
+                <div class="page-heading">
+
+                    <div>
+                        <h2>Products</h2>
+                        <p>Manage your POS product inventory.</p>
+                    </div>
+
+                    <button
+                        class="primary-btn"
+                        id="addProductBtn"
+                    >
+                        + Add Product
+                    </button>
+
+                </div>
+
+
+                <div class="product-admin-grid" id="adminProductGrid"></div>
+
+            </div>
+
+        </section>
+
+        <section class="page" id="reportsPage">
+
+            <div class="management-page">
+
+                <div class="page-heading">
+
+                    <div>
+                        <h2>Reports</h2>
+                        <p>Sales and transaction overview.</p>
+                    </div>
+
+                    <button
+                        class="secondary-btn"
+                        id="clearReportsBtn"
+                    >
+                        Clear Sales Data
+                    </button>
+
+                </div>
+
+
+                <div class="report-grid">
+
+                    <div class="report-card">
+
+                        <span>Total Sales</span>
+
+                        <strong id="reportSales">
+                            ₱0.00
+                        </strong>
+
+                        <small>All completed transactions</small>
+
+                    </div>
+
+
+                    <div class="report-card">
+
+                        <span>Total Orders</span>
+
+                        <strong id="reportOrders">
+                            0
+                        </strong>
+
+                        <small>Completed orders</small>
+
+                    </div>
+
+
+                    <div class="report-card">
+
+                        <span>Items Sold</span>
+
+                        <strong id="reportItems">
+                            0
+                        </strong>
+
+                        <small>Total quantity sold</small>
+
+                    </div>
+
+
+                    <div class="report-card">
+
+                        <span>Average Order</span>
+
+                        <strong id="reportAverage">
+                            ₱0.00
+                        </strong>
+
+                        <small>Average transaction value</small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="report-panel">
+
+                    <div class="panel-heading">
+
+                        <div>
+                            <h3>Product Sales</h3>
+                            <p>Best-selling products based on quantity.</p>
+                        </div>
+
+                    </div>
+
+                    <div id="productReport"></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<div class="modal-overlay" id="receiptModal">
+
+    <div class="receipt-modal">
+
+        <button
+            class="close-modal"
+            id="closeModal"
+        >
+            ×
+        </button>
+
+        <div class="receipt-top">
+
+            <div class="success-icon">
+                ✓
+            </div>
+
+            <h2>Payment Successful</h2>
+
+            <p>Thank you for your purchase!</p>
+
+        </div>
+
+        <div class="receipt" id="receipt"></div>
+
+        <button
+            class="new-order-btn"
+            id="newOrder"
+        >
+            Start New Order
+        </button>
+
+    </div>
+
+</div>
+
+<div class="modal-overlay" id="productModal">
+
+    <div class="form-modal">
+
+        <button
+            class="close-modal"
+            id="closeProductModal"
+        >
+            ×
+        </button>
+
+        <h2 id="productModalTitle">
+            Add Product
+        </h2>
+
+        <p>Create or update a product.</p>
+
+
+        <form id="productForm">
+
+            <input
+                type="hidden"
+                id="editProductId"
+            >
+
+            <label>
+                Product Name
+            </label>
+
+            <input
+                type="text"
+                id="productName"
+                placeholder="e.g. Espresso"
+                required
+            >
+
+
+            <label>
+                Category
+            </label>
+
+            <select id="productCategory" required>
+
+                <option value="coffee">
+                    Coffee
+                </option>
+
+                <option value="food">
+                    Food
+                </option>
+
+                <option value="dessert">
+                    Dessert
+                </option>
+
+            </select>
+
+
+            <label>
+                Price
+            </label>
+
+            <input
+                type="number"
+                id="productPrice"
+                placeholder="100"
+                min="1"
+                step="0.01"
+                required
+            >
+
+
+            <label>
+                Icon / Emoji
+            </label>
+
+            <input
+                type="text"
+                id="productIcon"
+                placeholder="☕"
+                maxlength="2"
+                required
+            >
+
+
+            <button
+                type="submit"
+                class="primary-btn full"
+            >
+                Save Product
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+<div class="modal-overlay" id="orderModal">
+
+    <div class="form-modal">
+
+        <button
+            class="close-modal"
+            id="closeOrderModal"
+        >
+            ×
+        </button>
+
+        <h2>Order Details</h2>
+
+        <div id="orderDetails"></div>
+
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
