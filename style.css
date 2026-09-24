@@ -1138,10 +1138,68 @@ td {
 
 /* RESPONSIVE */
 
-@media (max-width: 1100px) {
+/* =====================================================
+   RESPONSIVE DESIGN
+   PHONE + TABLET + LAPTOP + PC
+===================================================== */
+
+
+/* =====================================================
+   LARGE PC
+   1400px and above
+===================================================== */
+
+@media (min-width: 1400px) {
 
     .sidebar {
-        width: 80px;
+        width: 270px;
+    }
+
+    .products-section {
+        padding: 40px;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(4, minmax(170px, 1fr));
+    }
+
+    .product-image {
+        height: 150px;
+    }
+
+}
+
+
+/* =====================================================
+   LAPTOP / SMALL DESKTOP
+   1101px - 1399px
+===================================================== */
+
+@media (min-width: 1101px) and (max-width: 1399px) {
+
+    .content {
+        grid-template-columns:
+            minmax(0, 1fr)
+            360px;
+    }
+
+    .product-grid {
+        grid-template-columns:
+            repeat(3, minmax(140px, 1fr));
+    }
+
+}
+
+
+/* =====================================================
+   TABLET / SMALL LAPTOP
+   769px - 1100px
+===================================================== */
+
+@media (min-width: 769px) and (max-width: 1100px) {
+
+    .sidebar {
+        width: 82px;
         padding: 25px 12px;
     }
 
@@ -1150,9 +1208,7 @@ td {
         padding: 0;
     }
 
-    .logo > div:last-child,
-    .cashier > div:last-child,
-    .logout {
+    .logo > div:last-child {
         display: none;
     }
 
@@ -1163,90 +1219,619 @@ td {
     }
 
     .nav-item span {
-        font-size: 18px;
+        font-size: 19px;
     }
 
     .cashier {
         justify-content: center;
+        padding: 15px 0;
     }
 
-    .product-grid {
-        grid-template-columns: repeat(2, 1fr);
+    .cashier > div:last-child {
+        display: none;
     }
 
-    .product-admin-grid {
-        grid-template-columns: repeat(2, 1fr);
+    .logout {
+        display: none;
     }
 
-    .report-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-
-@media (max-width: 850px) {
 
     .content {
         grid-template-columns: 1fr;
     }
+
 
     .cart {
         border-left: none;
         border-top: 1px solid var(--border);
     }
 
-    .product-admin-grid {
-        grid-template-columns: 1fr;
+
+    .cart-items {
+        max-height: 350px;
     }
 
-    .report-grid {
-        grid-template-columns: repeat(2, 1fr);
+
+    .product-grid {
+        grid-template-columns:
+            repeat(3, minmax(150px, 1fr));
     }
+
+
+    .product-admin-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .report-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+/* =====================================================
+   MOBILE LANDSCAPE / LARGE PHONE
+   601px - 768px
+===================================================== */
+
+@media (min-width: 601px) and (max-width: 768px) {
+
+    .sidebar {
+        width: 70px;
+        padding: 20px 10px;
+    }
+
+    .logo {
+        justify-content: center;
+        padding: 0;
+        margin-bottom: 35px;
+    }
+
+    .logo > div:last-child {
+        display: none;
+    }
+
+    .nav-item {
+        justify-content: center;
+        padding: 13px;
+        font-size: 0;
+    }
+
+    .nav-item span {
+        font-size: 18px;
+    }
+
+    .cashier > div:last-child,
+    .logout {
+        display: none;
+    }
+
+    .cashier {
+        justify-content: center;
+    }
+
+
+    .topbar {
+        height: 75px;
+        padding: 0 20px;
+    }
+
+    .topbar h1 {
+        font-size: 19px;
+    }
+
+
+    .content {
+        display: block;
+    }
+
+
+    .products-section {
+        padding: 25px 20px;
+    }
+
+
+    .product-grid {
+        grid-template-columns:
+            repeat(3, 1fr);
+    }
+
+
+    .product-image {
+        height: 105px;
+        font-size: 38px;
+    }
+
+
+    .cart {
+        border-left: none;
+        border-top: 1px solid var(--border);
+    }
+
+
+    .cart-items {
+        max-height: 300px;
+    }
+
+
+    .product-admin-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+
+    .report-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+
+    table {
+        min-width: 750px;
+    }
+
 
     .table-container {
         overflow-x: auto;
     }
 
-    table {
-        min-width: 750px;
-    }
 }
 
 
+/* =====================================================
+   PHONE
+   0px - 600px
+===================================================== */
+
 @media (max-width: 600px) {
+
+    body {
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+
+    /* ---------------------------------------------
+       HIDE DESKTOP SIDEBAR
+    --------------------------------------------- */
 
     .sidebar {
         display: none;
     }
 
+
+    /* ---------------------------------------------
+       TOPBAR
+    --------------------------------------------- */
+
     .topbar {
-        padding: 0 20px;
+        height: 70px;
+        padding: 0 16px;
     }
 
-    .products-section,
-    .management-page {
-        padding: 25px 20px;
+    .topbar h1 {
+        font-size: 17px;
     }
 
-    .section-header,
-    .page-heading {
+    .topbar p {
+        font-size: 9px;
+    }
+
+    .status {
+        font-size: 9px;
+    }
+
+    .status-dot {
+        width: 6px;
+        height: 6px;
+    }
+
+
+    /* ---------------------------------------------
+       MAIN CONTENT
+    --------------------------------------------- */
+
+    .content {
+        display: flex;
         flex-direction: column;
-        align-items: flex-start;
+        min-height: auto;
     }
+
+
+    .products-section {
+        padding: 20px 15px;
+    }
+
+
+    /* ---------------------------------------------
+       SECTION HEADER
+    --------------------------------------------- */
+
+    .section-header {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+
+    .section-header h2 {
+        font-size: 17px;
+    }
+
+    .section-header p {
+        font-size: 10px;
+    }
+
 
     .search-box {
         width: 100%;
+        height: 44px;
     }
+
+
+    /* ---------------------------------------------
+       CATEGORIES
+    --------------------------------------------- */
+
+    .categories {
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 5px;
+        margin: 18px 0;
+        scrollbar-width: none;
+    }
+
+    .categories::-webkit-scrollbar {
+        display: none;
+    }
+
+    .category {
+        flex: 0 0 auto;
+        padding: 8px 15px;
+    }
+
+
+    /* ---------------------------------------------
+       PRODUCT GRID
+    --------------------------------------------- */
 
     .product-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 10px;
     }
 
-    .product-image {
-        height: 100px;
+
+    .product-card {
+        padding: 10px;
+        border-radius: 10px;
     }
+
+
+    .product-image {
+        height: 105px;
+        font-size: 37px;
+        margin-bottom: 10px;
+    }
+
+
+    .product-card h3 {
+        font-size: 11px;
+    }
+
+
+    .category-name {
+        font-size: 8px;
+    }
+
+
+    .product-bottom {
+        margin-top: 9px;
+    }
+
+
+    .price {
+        font-size: 12px;
+    }
+
+
+    .add-btn {
+        width: 27px;
+        height: 27px;
+    }
+
+
+    /* ---------------------------------------------
+       CART
+    --------------------------------------------- */
+
+    .cart {
+        width: 100%;
+        border-left: none;
+        border-top: 1px solid var(--border);
+    }
+
+
+    .cart-header {
+        padding: 20px 15px;
+    }
+
+
+    .cart-items {
+        max-height: 320px;
+        padding: 10px 15px;
+    }
+
+
+    .empty-cart {
+        padding: 45px 15px;
+    }
+
+
+    .cart-summary {
+        padding: 18px 15px 20px;
+    }
+
+
+    .total-row strong {
+        font-size: 20px;
+    }
+
+
+    .checkout-btn {
+        height: 50px;
+    }
+
+
+    /* ---------------------------------------------
+       MANAGEMENT PAGES
+    --------------------------------------------- */
+
+    .management-page {
+        padding: 20px 15px;
+    }
+
+
+    .page-heading {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+
+    .page-heading h2 {
+        font-size: 19px;
+    }
+
+
+    .page-heading p {
+        font-size: 10px;
+    }
+
+
+    .primary-btn {
+        width: 100%;
+    }
+
+
+    .secondary-btn {
+        width: 100%;
+    }
+
+
+    /* ---------------------------------------------
+       ORDERS TABLE
+    --------------------------------------------- */
+
+    .table-container {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+
+    table {
+        min-width: 700px;
+    }
+
+
+    th,
+    td {
+        padding: 13px;
+        white-space: nowrap;
+    }
+
+
+    /* ---------------------------------------------
+       ADMIN PRODUCTS
+    --------------------------------------------- */
+
+    .product-admin-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+
+    .admin-product {
+        padding: 13px;
+    }
+
+
+    .admin-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 21px;
+    }
+
+
+    .admin-info h3 {
+        font-size: 11px;
+    }
+
+
+    /* ---------------------------------------------
+       REPORTS
+    --------------------------------------------- */
+
+    .report-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 9px;
+    }
+
+
+    .report-card {
+        padding: 15px;
+    }
+
+
+    .report-card span {
+        font-size: 8px;
+    }
+
+
+    .report-card strong {
+        font-size: 17px;
+    }
+
+
+    .report-card small {
+        font-size: 8px;
+    }
+
+
+    .report-panel {
+        padding: 15px;
+    }
+
+
+    .sales-row {
+        gap: 10px;
+    }
+
+
+    .sales-icon {
+        width: 35px;
+        height: 35px;
+    }
+
+
+    .sales-info strong {
+        font-size: 10px;
+    }
+
+
+    .sales-info span {
+        font-size: 8px;
+    }
+
+
+    .sales-value {
+        font-size: 10px;
+    }
+
+
+    /* ---------------------------------------------
+       MODALS
+    --------------------------------------------- */
+
+    .receipt-modal,
+    .form-modal {
+        width: calc(100% - 30px);
+        max-height: 90vh;
+        overflow-y: auto;
+        padding: 22px;
+        border-radius: 13px;
+    }
+
+
+    .form-modal h2 {
+        font-size: 17px;
+    }
+
+
+    /* ---------------------------------------------
+       ORDER DETAILS
+    --------------------------------------------- */
+
+    .order-detail-item {
+        font-size: 10px;
+    }
+
+}
+
+
+/* =====================================================
+   VERY SMALL PHONES
+   0px - 380px
+===================================================== */
+
+@media (max-width: 380px) {
+
+    .topbar {
+        padding: 0 12px;
+    }
+
+
+    .topbar h1 {
+        font-size: 15px;
+    }
+
+
+    .status {
+        font-size: 8px;
+    }
+
+
+    .products-section {
+        padding: 17px 10px;
+    }
+
+
+    .product-grid {
+        gap: 7px;
+    }
+
+
+    .product-card {
+        padding: 8px;
+    }
+
+
+    .product-image {
+        height: 90px;
+        font-size: 32px;
+    }
+
+
+    .product-card h3 {
+        font-size: 10px;
+    }
+
+
+    .price {
+        font-size: 11px;
+    }
+
+
+    .add-btn {
+        width: 24px;
+        height: 24px;
+    }
+
 
     .report-grid {
         grid-template-columns: 1fr;
     }
+
+
+    .cart-header,
+    .cart-summary {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
 }
